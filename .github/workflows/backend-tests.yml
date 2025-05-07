@@ -1,3 +1,4 @@
+
 name: Backend API Tests
 
 on:
@@ -27,7 +28,7 @@ jobs:
         run: mvn clean test
 
       - name: Upload Allure Results
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: allure-results
           path: target/allure-results
