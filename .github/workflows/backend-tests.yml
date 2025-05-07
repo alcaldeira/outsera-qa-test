@@ -32,3 +32,21 @@ jobs:
         with:
           name: allure-results
           path: target/allure-results
+      
+      - name: Install Allure CLI
+        run: |
+            sudo apt-get update
+            sudo apt-get install -y default-jre
+            curl -o allure.tgz -L https://github.com/allure-framework/allure2/releases/download/2.24.0/allure-2.24.0.tgz
+            tar -xvzf allure.tgz
+            sudo mv allure-2.24.0 /opt/allure
+            sudo ln -s /opt/allure/bin/allure /usr/bin/allure
+        
+      - name: Generate Allure Report
+        run: allure generate target/allure-results -o allure-report --clean
+        
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+            github_token: ${{ secrets.GITHUB_TOKEN }}
+            publish_dir: automation-backend/allure-report
