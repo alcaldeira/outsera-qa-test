@@ -1,0 +1,36 @@
+# Diretórios do Maven
+/target/
+!.mvn/wrapper/maven-wrapper.jar
+
+# Arquivos de build
+*.log
+*.class
+*.jar
+*.war
+*.ear
+
+# Relatórios
+allure-report/
+allure-results/
+
+# IDEs
+.idea/
+*.iml
+*.ipr
+*.iws
+.vscode/
+*.sw?
+
+# SO
+.DS_Store
+Thumbs.db
+
+# Arquivos temporários
+*.tmp
+*.bak
+*.swp
+*~
+
+# Configs locais
+.env
+*.local
