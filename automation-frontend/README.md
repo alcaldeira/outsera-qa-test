@@ -26,7 +26,8 @@ Este projeto realiza testes automatizados E2E na aplicação [SauceDemo](https:/
 
 ```bash
 npm install
-npx playwright test
+npm run test
+npm run report
 ```
 
 ## ▶️ Execução no gitAction

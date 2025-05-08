@@ -15,11 +15,6 @@ test('Login Success', async ({ page }) => {
   await loginPage.assertLoginSuccess();
 });
 
-// Esse teste está com falha de forma intencional
-test('Intentional invalid password ', async ({ page }) => {
-  await loginPage.login('standard_user', '1231');
-  await loginPage.assertLoginSuccess();
-});
 
 test('Login password invalid', async ({ page }) => {
   const loginPage = new LoginPage(page);
