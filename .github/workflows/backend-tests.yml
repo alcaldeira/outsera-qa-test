@@ -2,7 +2,7 @@ name: Backend API Tests
 
 on:
   push:
-    branches: [ ci-gitaction ]
+    branches: [ main ]
   workflow_dispatch:
 
 jobs:
