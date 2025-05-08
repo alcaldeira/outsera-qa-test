@@ -8,7 +8,7 @@ export default defineConfig({
     ['list'],
     ['html', { outputFolder: 'playwright-report', open: 'never' }],
     ['json', { outputFile: 'playwright-report/report.json' }]
-  ],
+  ],,
   use: {
     headless: true,
     viewport: { width: 1280, height: 720 },

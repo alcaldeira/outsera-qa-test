@@ -46,8 +46,3 @@ jobs:
           echo "📄 Download the Playwright HTML report from the artifacts section:"
           echo "🔗 https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"
           echo "🔗 Click on the 'Artifacts' section to download the report."
-
-      - name: Parse Playwright Results
-        if: always() # roda mesmo que os testes falhem
-        run: |
-          node .github/scripts/playwright-summary.js
