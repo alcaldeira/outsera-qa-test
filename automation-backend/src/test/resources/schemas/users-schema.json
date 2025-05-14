@@ -1,0 +1,24 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "required": ["users", "total", "skip", "limit"],
+  "properties": {
+    "users": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "firstName", "lastName", "username", "password"],
+        "properties": {
+          "id": { "type": "integer" },
+          "firstName": { "type": "string" },
+          "lastName": { "type": "string" },
+          "username": { "type": "string" },
+          "password": { "type": "string" }
+        }
+      }
+    },
+    "total": { "type": "integer" },
+    "skip": { "type": "integer" },
+    "limit": { "type": "integer" }
+  }
+}
