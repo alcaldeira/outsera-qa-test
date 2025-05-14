@@ -15,6 +15,7 @@ Este repositório contém um conjunto de automações de testes desenvolvidas pa
 - Validação de endpoints públicos
 - Verificação de status code, tempo de resposta e payload
 - Estrutura em Java com Maven
+- API pública utilizada https://dummyjson.com/
 
 ### ➤ `k6` - Testes de carga com K6
 - Testes simulando até 500 usuários simultâneos
