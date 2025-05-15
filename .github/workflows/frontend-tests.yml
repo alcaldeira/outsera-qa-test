@@ -20,12 +20,15 @@ jobs:
           node-version: 18
 
       - name: 📦 Install dependencies
+        working-directory: automation-frontend
         run: npm install
 
       - name: 🧪 Run Cucumber Tests
+        working-directory: automation-frontend
         run: npm run test
 
       - name: 🧾 Generate HTML Report
+        working-directory: automation-frontend
         run: npm run report:generate
 
       - name: 📤 Upload HTML Report
@@ -33,7 +36,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: cucumber-html-report
-          path: reports/html
+          path: automation-frontend/reports/html
 
       - name: 📢 Display report link
         if: always()
