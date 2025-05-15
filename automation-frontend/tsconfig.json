@@ -1,0 +1,29 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "pages/*": [
+        "features/pages/*"
+      ],
+      "features/*": [
+        "features/*"
+      ],
+      "utils/*": [
+        "features/support/*"
+      ]
+    },
+    "module": "commonjs",
+    "target": "es6",
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "skipLibCheck": true,
+    "strict": true
+  },
+  "include": [
+    "tests",
+    "features/pages",
+    "utils",
+    "features"
+  ]
+}
