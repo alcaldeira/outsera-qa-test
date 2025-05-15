@@ -1,9 +1,9 @@
 import { test, expect } from '@playwright/test';
-import { LoginPage } from '../pages/LoginPage';
-import { ProductsPage } from '../pages/ProductsPage';
-import { CartPage } from '../pages/CartPage';
-import { CheckoutPage } from '../pages/CheckoutPage';
-import { CheckoutCompletePage } from '../pages/CheckoutCompletePage';
+import { LoginPage } from '../features/pages/LoginPage';
+import { ProductsPage } from '../features/pages/ProductsPage';
+import { CartPage } from '../features/pages/CartPage';
+import { CheckoutPage } from '../features/pages/CheckoutPage';
+import { CheckoutCompletePage } from '../features/pages/CheckoutCompletePage';
 
 let loginPage: LoginPage;
 let productsPage: ProductsPage;

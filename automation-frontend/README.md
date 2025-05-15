@@ -17,17 +17,34 @@ Este projeto realiza testes automatizados E2E na aplicação [SauceDemo](https:/
 
 ## 📁 Estrutura
 
-- `pages/`: Page Objects
-- `tests/`: Casos de teste
-- `utils/`: Utilitários
+- `features/pages/`: Page Objects
+- `/features`: Casos de teste
+- `support/`: Utilitários
 - `playwright.config.js`: Configuração base
+- `cucumber.js`: Configurações do cucumber
 
-## ▶️ Como executar
-
+## ▶️ Instala dependencias 
+# Para exec
 ```bash
 npm install
+```
+
+# Para executar todos os testes
+```bash
 npm run test
-npm run report
+```
+
+# Para executar testes por tag
+```bash
+npx cucumber-js --tags "@sua-tag"
+Exemplo
+npx cucumber-js --tags "@login"  
+```
+
+# Gerar relatório após execução dos testes
+```bash
+npm run report:generate
+npm run report:open
 ```
 
 ## ▶️ Execução no gitAction
