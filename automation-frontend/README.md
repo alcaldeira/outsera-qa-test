@@ -47,8 +47,6 @@ npm run report:generate
 npm run report:open
 ```
 
-npm run report
-
 ## ▶️ Execução no gitAction
 Para executar o teste de E2E dentro do gitAction 
 Acesse o link https://github.com/alcaldeira/outsera-qa-test/actions
