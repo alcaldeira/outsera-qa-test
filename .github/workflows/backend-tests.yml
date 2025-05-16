@@ -2,7 +2,7 @@ name: BDD Tests
 
 on:
   push:
-    branches: [main]
+    branches: [ci-e2e]
   pull_request:
     branches: [main]
 
@@ -25,6 +25,12 @@ jobs:
 
       - name: 📦 Install dependencies
         run: npm install
+
+      - name: 🔧 Fix Playwright binary permissions
+        run: chmod +x ./node_modules/.bin/playwright
+
+      - name: 📥 Install Playwright Browsers
+        run: npx playwright install --with-deps
 
       - name: 🔧 Give execute permission to cucumber-js
         run: chmod +x ./node_modules/.bin/cucumber-js

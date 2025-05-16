@@ -10,6 +10,10 @@ jobs:
   run-bdd-tests:
     runs-on: ubuntu-latest
 
+    defaults:
+      run:
+        working-directory: automation-frontend
+
     steps:
       - name: 📥 Checkout repository
         uses: actions/checkout@v3
@@ -20,28 +24,34 @@ jobs:
           node-version: 18
 
       - name: 📦 Install dependencies
-        working-directory: automation-frontend
         run: npm install
 
+      - name: 🔧 Fix Playwright binary permissions
+        run: chmod +x ./node_modules/.bin/playwright
+
+      - name: 📥 Install Playwright Browsers
+        run: npx playwright install --with-deps
+
+      - name: 🔧 Fix cucumber-js permissions
+        run: chmod +x ./node_modules/.bin/cucumber-js
+
       - name: 🧪 Run Cucumber Tests
-        working-directory: automation-frontend
         run: npm run test
 
       - name: 🧾 Generate HTML Report
-        working-directory: automation-frontend
         run: npm run report:generate
 
-      - name: 📤 Upload HTML Report
+      - name: 📤 Upload HTML Report (artifact)
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: cucumber-html-report
           path: automation-frontend/reports/html
 
-      - name: 📢 Display report link
+      - name: 🚀 Deploy to GitHub Pages
         if: always()
-        run: |
-          echo "✅ BDD tests finished!"
-          echo "📄 Download the Cucumber HTML report from the Artifacts section:"
-          echo "🔗 https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"
-          echo "🧪 Click on 'Artifacts' and download: cucumber-html-report"
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: automation-frontend/reports/html
+

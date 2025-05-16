@@ -50,4 +50,14 @@ npm run report:open
 ## ▶️ Execução no gitAction
 Para executar o teste de E2E dentro do gitAction 
 Acesse o link https://github.com/alcaldeira/outsera-qa-test/actions
-Executa a action [Playwright Tests - Frontend]
+Executa a action [BDD Tests]
+Após a execução será gerado um link para download do relátorio de teste
+
+## Subir relatório local após Download
+
+1. Baixar arquivo de relatório após execução dos testes
+2. acessar o arquivo baixado
+3. Executar o comando no terminal
+```bash
+start index.html
+```
