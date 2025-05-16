@@ -1,60 +1,51 @@
-name: BDD Tests
+name: Backend API Tests
 
 on:
   push:
-    branches: [ci-e2e]
-  pull_request:
-    branches: [main]
+    branches: [ security-token ]
+  workflow_dispatch:
 
 jobs:
-  run-bdd-tests:
+  test:
     runs-on: ubuntu-latest
 
-    env:
-      TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
-    
     defaults:
       run:
-        working-directory: automation-frontend
+        working-directory: automation-backend
 
     steps:
-      - name: 📥 Checkout repository
+      - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: 🟢 Set up Node.js
-        uses: actions/setup-node@v3
+      - name: Set up JDK 17
+        uses: actions/setup-java@v3
         with:
-          node-version: 18
+          java-version: '17'
+          distribution: 'temurin'
 
-      - name: 📦 Install dependencies
-        run: npm install
+      - name: Run tests with Maven
+        run: mvn clean test
 
-      - name: 🔧 Fix Playwright binary permissions
-        run: chmod +x ./node_modules/.bin/playwright
-
-      - name: 📥 Install Playwright Browsers
-        run: npx playwright install --with-deps
-
-      - name: 🔧 Give execute permission to cucumber-js
-        run: chmod +x ./node_modules/.bin/cucumber-js
-
-      - name: 🧪 Run Cucumber Tests
-        run: npm run test
-
-      - name: 🧾 Generate HTML Report
-        run: npm run report:generate
-
-      - name: 📤 Upload HTML Report
-        if: always()
+      - name: Upload Allure Results
         uses: actions/upload-artifact@v4
         with:
-          name: cucumber-html-report
-          path: automation-frontend/reports/html
+          name: allure-results
+          path: target/allure-results
 
-      - name: 📢 Display report link
-        if: always()
+      - name: Install Allure CLI
         run: |
-          echo "✅ BDD tests finished!"
-          echo "📄 Download the Cucumber HTML report from the Artifacts section:"
-          echo "🔗 https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"
-          echo "🧪 Click on 'Artifacts' and download: cucumber-html-report"
+          sudo apt-get update
+          sudo apt-get install -y default-jre
+          curl -o allure.tgz -L https://github.com/allure-framework/allure2/releases/download/2.24.0/allure-2.24.0.tgz
+          tar -xvzf allure.tgz
+          sudo mv allure-2.24.0 /opt/allure
+          sudo ln -s /opt/allure/bin/allure /usr/bin/allure
+
+      - name: Generate Allure Report
+        run: allure generate target/allure-results -o allure-report --clean
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: automation-backend/allure-results
