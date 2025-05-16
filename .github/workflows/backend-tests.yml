@@ -26,6 +26,10 @@ jobs:
       - name: 📦 Install dependencies
         run: npm install
 
+        
+      - name: 📥 Install Playwright Browsers
+        run: npx playwright install --with-deps
+        
       - name: 🔧 Give execute permission to cucumber-js
         run: chmod +x ./node_modules/.bin/cucumber-js
 
