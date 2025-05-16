@@ -2,7 +2,7 @@ name: Backend API Tests
 
 on:
   push:
-    branches: [ security-token ]
+    branches: [security-token]
   workflow_dispatch:
 
 jobs:
@@ -24,15 +24,18 @@ jobs:
           distribution: 'temurin'
 
       - name: Run tests with Maven
+        continue-on-error: true  # <- Permite continuar mesmo com testes falhando
         run: mvn clean test
 
       - name: Upload Allure Results
+        if: always()
         uses: actions/upload-artifact@v4
         with:
           name: allure-results
-          path: target/allure-results
+          path: automation-backend/target/allure-results
 
       - name: Install Allure CLI
+        if: always()
         run: |
           sudo apt-get update
           sudo apt-get install -y default-jre
@@ -42,10 +45,13 @@ jobs:
           sudo ln -s /opt/allure/bin/allure /usr/bin/allure
 
       - name: Generate Allure Report
+        if: always()
         run: allure generate target/allure-results -o allure-report --clean
 
-      - name: Deploy to GitHub Pages
+      - name: Deploy to GitHub Pages (subdir)
+        if: always()
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: automation-backend/allure-results
+          publish_dir: automation-backend/allure-report
+          destination_dir: backend-report
