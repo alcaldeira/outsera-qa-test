@@ -1,8 +1,8 @@
 -------------------------------------------------------------------------------
 Test set: br.com.aval.testes.product.ProductTest
 -------------------------------------------------------------------------------
-Tests run: 10, Failures: 5, Errors: 0, Skipped: 0, Time elapsed: 6.809 s <<< FAILURE! -- in br.com.aval.testes.product.ProductTest
-br.com.aval.testes.product.ProductTest.validateProductsSchema -- Time elapsed: 0.817 s <<< FAILURE!
+Tests run: 10, Failures: 5, Errors: 0, Skipped: 0, Time elapsed: 6.804 s <<< FAILURE! -- in br.com.aval.testes.product.ProductTest
+br.com.aval.testes.product.ProductTest.validateProductsSchema -- Time elapsed: 0.822 s <<< FAILURE!
 java.lang.AssertionError: 
 1 expectation failed.
 Response body doesn't match expectation.
@@ -221,7 +221,7 @@ error: object has missing required properties (["brand"])
 	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:507)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:495)
 
-br.com.aval.testes.product.ProductTest.deleteProductFromList -- Time elapsed: 1.234 s <<< FAILURE!
+br.com.aval.testes.product.ProductTest.deleteProductFromList -- Time elapsed: 1.243 s <<< FAILURE!
 java.lang.AssertionError: 
 1 expectation failed.
 Expected status code <404> but was <200>.
@@ -317,7 +317,7 @@ Expected status code <404> but was <200>.
 	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:507)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:495)
 
-br.com.aval.testes.product.ProductTest.getProductListNoToken -- Time elapsed: 0.399 s <<< FAILURE!
+br.com.aval.testes.product.ProductTest.getProductListNoToken -- Time elapsed: 0.390 s <<< FAILURE!
 java.lang.AssertionError: 
 1 expectation failed.
 Response body doesn't match expectation.
