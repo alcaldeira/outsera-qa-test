@@ -13,7 +13,7 @@ import static org.hamcrest.Matchers.equalTo;
 
 public class WebhookTest {
     private static final String CHAT_ID = "839391957";
-    private static final String TOKEN = "SEU_TOKEN";
+    private static final String BOT_TOKEN = System.getenv("TELEGRAM_BOT_TOKEN");
 
     @Test
     public void verifyWebhookConfigurationSuccess() {
@@ -22,24 +22,23 @@ public class WebhookTest {
         given().baseUri(Environment.telegram.getBaseUrl())
             .contentType(ContentType.JSON)
             .body(payload)
+            .log().all()
         .when()
-            .post("/bot8109297278:AAEKJo8imf1fA0b-7lUjwlLTmMLZgAbXYpA/setWebhook?url=https://andyfinancialcontrol.app.n8n.cloud/webhook-test/telegram-controle")
+            .post("/bot" + BOT_TOKEN + "/setWebhook?url=https://andyfinancialcontrol.app.n8n.cloud/webhook-test/telegram-controle")
         .then()
             .statusCode(200)
             .body(matchesJsonSchemaInClasspath("schemas/webhook-response-schema.json"));
     }
+
     @Test
     public void verifyMessageToTelegram() {
-        String token = AuthHooks.getAuthToken("emilys", "emilyspass");
-
-        String botToken = "8109297278:AAEKJo8imf1fA0b-7lUjwlLTmMLZgAbXYpA";
-
         given().baseUri(Environment.telegram.getBaseUrl())
             .contentType(ContentType.URLENC)
             .formParam("chat_id", CHAT_ID)
             .formParam("text", "🚀 Compra registrada: R$ 25,00 - Padaria - 07/04/2025")
+            .log().all()
         .when()
-            .post("/bot" + botToken + "/sendMessage")
+            .post("/bot" + BOT_TOKEN + "/sendMessage")
         .then()
             .statusCode(200)
             .body("ok", equalTo(true));
