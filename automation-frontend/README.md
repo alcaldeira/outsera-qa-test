@@ -51,9 +51,11 @@ npm run report:open
 Para executar o teste de E2E dentro do gitAction 
 Acesse o link https://github.com/alcaldeira/outsera-qa-test/actions
 Executa a action [BDD Tests]
-Após a execução será gerado um link para download do relátorio de teste
+Após execução será gerado um link no git page com o relatório
+[Relatório de Testes](https://alcaldeira.github.io/outsera-qa-test/)
+![alt text](image.png)
 
-## Subir relatório local após Download
+## Caso queira baixar e subir relatório local após Download
 
 1. Baixar arquivo de relatório após execução dos testes
 2. acessar o arquivo baixado

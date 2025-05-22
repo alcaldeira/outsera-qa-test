@@ -28,3 +28,7 @@ mvn test
 Para executar os testes de Backend dentro do gitAction 
 Acesse o link https://github.com/alcaldeira/outsera-qa-test/actions
 Executa a action [Backend API Tests]
+
+Após execução da action será gerado uma página com o relatório
+[Relatório de Testes](https://alcaldeira.github.io/outsera-qa-test/backend-report/)
+![alt text](image.png)

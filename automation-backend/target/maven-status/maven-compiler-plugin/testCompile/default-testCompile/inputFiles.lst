@@ -1,1 +1,11 @@
-C:\Users\ander\workspace\outsera-test-qa\automation-backend\src\test\java\br\com\aval\testes\ApiTest.java
+C:\Users\ander\workspace\outsera-test-qa\automation-backend\src\test\java\BaseTest.java
+C:\Users\ander\workspace\outsera-test-qa\automation-backend\src\test\java\br\com\aval\testes\login\LoginTest.java
+C:\Users\ander\workspace\outsera-test-qa\automation-backend\src\test\java\br\com\aval\testes\product\ProductTest.java
+C:\Users\ander\workspace\outsera-test-qa\automation-backend\src\test\java\br\com\aval\testes\telegram\WebhookTest.java
+C:\Users\ander\workspace\outsera-test-qa\automation-backend\src\test\java\Request\LoginRequest.java
+C:\Users\ander\workspace\outsera-test-qa\automation-backend\src\test\java\Request\ProductRequest.java
+C:\Users\ander\workspace\outsera-test-qa\automation-backend\src\test\java\Request\WebhookRequest.java
+C:\Users\ander\workspace\outsera-test-qa\automation-backend\src\test\java\Utils\AuthHooks.java
+C:\Users\ander\workspace\outsera-test-qa\automation-backend\src\test\java\Utils\Environment.java
+C:\Users\ander\workspace\outsera-test-qa\automation-backend\src\test\java\Utils\ProductClient.java
+C:\Users\ander\workspace\outsera-test-qa\automation-backend\src\test\java\Utils\ProductFactory.java
